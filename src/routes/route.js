@@ -17,9 +17,9 @@ router.get('/candidates', function (req, res) {
             array1[i]=array[i]
         }
     }
-    res.send(array1)
+    return res.send(array1) 
     // console.log(array1)
-    // res.send('My first ever api!')
+    // return  res.send('My first ever api!')
 });
 
 
