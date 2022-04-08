@@ -24,12 +24,12 @@ router.get('/movies', function (req, res) {
 //=====================================================================================================
 //Problem 2 and 3  Create an API GET /movies/:indexNumber (For example GET /movies/1  and edge condition
 router.get('/movies/:indexNumber', function (req, res) {
-    const arrayMovie1=["rang de basnasti", "the shining", "lord of the rings", "bartman begins"]
+    const arrayMovie1=["rang de basanti", "the shining", "lord of the rings", "batman begins"]
     const index =req.params.indexNumber
     if(index<=arrayMovie1.length-1)
     {res.send(arrayMovie1[index]) }
     else
-    {res.send("Please enter valid index value")} 
+    {res.send("Please enter valid index value")} // problem edge conditions
 });
 //========================================================================================================
 //Problem 4  Write another api called GET /films  //for array of objects
