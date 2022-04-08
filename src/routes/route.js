@@ -16,13 +16,13 @@ router.get('/test-me', function (req, res) {
     res.send('My first ever api!')
 });
 //====================================================================================================
-//Problem 1
+//Problem 1 Create an API for GET /movies that returns a list of movies
 const arrayMovie =["Dangal","rang de basanti","demon slayer","dr stone","full-metal alchemist"]
 router.get('/movies', function (req, res) {
     res.send(arrayMovie)  
 });
 //=====================================================================================================
-//Problem 2 and 3
+//Problem 2 and 3  Create an API GET /movies/:indexNumber (For example GET /movies/1  and edge condition
 router.get('/movies/:indexNumber', function (req, res) {
     const arrayMovie1=["rang de basnasti", "the shining", "lord of the rings", "bartman begins"]
     const index =req.params.indexNumber
@@ -32,7 +32,7 @@ router.get('/movies/:indexNumber', function (req, res) {
     {res.send("Please enter valid index value")} 
 });
 //========================================================================================================
-//Problem 4
+//Problem 4  Write another api called GET /films  //for array of objects
 const arrayObjMovie =[ {
     "id": 1,
     "name": "rang de basnasti"
@@ -51,7 +51,7 @@ const arrayObjMovie =[ {
     res.send(arrayObjMovie)  
 });
 //===================================================================
-//Problem 5
+//Problem 5  Write api GET /films/:filmId  ,Example for a request GET /films/3 should return the movie object with edge conditions
 router.get('/films/:filmId', function(req, res) {
     const filmIndex = req.params.filmId
     for(let i=0;i<arrayObjMovie.length;i++)
