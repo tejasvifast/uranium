@@ -72,12 +72,33 @@ const deleteUser = async function(req,res){
   res.send({ status: true, data: updatedUser });
 }
 //#################################################################################
+const updatedOwnOnly = async function(req,res){
+  let Id = req.params.userId
+  let headertoken= req.headers["x-auth-token"]
+  if(!headertoken) headertoken =req.headers["X-Auth-Token"]
+  if(!headertoken) return res.send({status:false,msg:"please provide the token header"})
+
+  let verifiedToken = jwt.verify(headertoken,"functionup uranium tejasvi")
+  if(!verifiedToken) return res.send({status:false,msg:"token is invalid"})
+
+  let uservalid = await userModel.findById({_id:Id})
+  if(!uservalid) return res.send({status:false,msg:"No such user exists"})
+
+  let verifiedId =verifiedToken.userId
+  if(Id!=verifiedId)  return res.send({status:false,msg:"You cant modify other user details"})
+  let data = req.body
+  uservalid.age=data.age
+  res.send({status:true,msg:uservalid})
+
+}
+//#################################################################################
 
 module.exports.createUser = createUser;
 module.exports.loginUser = loginUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.deleteUser=deleteUser;
+module.exports.updatedOwnOnly=updatedOwnOnly
 
 
 // const createUser = async function (abcd, xyz) {
